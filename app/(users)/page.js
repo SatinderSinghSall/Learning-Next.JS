@@ -86,8 +86,8 @@ const Home = () => {
             <h2 className="text-3xl font-bold mb-6">What Developers Say</h2>
             <div className="bg-gray-100 p-6 rounded-xl shadow">
               <p className="text-lg italic text-gray-700">
-                "Satinder helped me speed up my development process by 3x. It’s
-                intuitive, clean, and just works."
+                &quot;Satinder helped me speed up my development process by 3x.
+                It’s intuitive, clean, and just works.&quot;
               </p>
               <div className="mt-4 text-sm text-gray-500">
                 – A Happy Developer
