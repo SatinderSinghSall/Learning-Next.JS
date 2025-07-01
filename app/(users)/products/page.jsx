@@ -1,5 +1,8 @@
+import ProductList from "./ProductList";
+
 const Products = async ({ searchParams }) => {
   const searchParam = await searchParams;
+  console.log("Outer:", searchParam);
 
   const category = searchParam?.category || "all";
   const sort = searchParam?.sort || "default";
@@ -15,9 +18,13 @@ const Products = async ({ searchParams }) => {
           Showing - category: {category}, sort: {sort} & page: {page}
         </p>
         <p className="text-gray-600 text-lg">This is a Products page.</p>
+
+        <ProductList />
       </main>
     </div>
   );
 };
-// products?category=laptops&page=2&sort=price-asc
+
 export default Products;
+
+// products?category=laptops&page=2&sort=price-asc
