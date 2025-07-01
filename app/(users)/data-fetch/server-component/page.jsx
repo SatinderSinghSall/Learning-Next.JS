@@ -49,7 +49,53 @@ const DataFetchServer = async (props) => {
   }
 
   return (
-    <div>
+    <div className="grid grid-cols-2 gap-3 h-full ">
+      <div className="h-full flex justify-center items-center px-6 py-8">
+        <div className="bg-gradient-to-br from-white/70 to-purple-100/60 backdrop-blur-md rounded-2xl shadow-lg p-8 max-w-xl w-full border border-purple-200 space-y-5 transition-all duration-500 hover:shadow-xl">
+          <div className="flex items-center space-x-3">
+            <div className="bg-indigo-500 text-white p-2 rounded-full shadow-md">
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 11c0-.56-.44-1-1-1s-1 .44-1 1 .44 1 1 1 1-.44 1-1zm0 0v2m4 0v2a4 4 0 11-8 0v-2m4 0V9a4 4 0 10-8 0v2"
+                />
+              </svg>
+            </div>
+            <h2 className="text-2xl font-bold text-indigo-800">
+              Understanding Suspense
+            </h2>
+          </div>
+          <p className="text-gray-700 text-base leading-relaxed">
+            <span className="font-medium">Hey there!</span> I'm the{" "}
+            <code className="bg-gray-100 px-1 py-0.5 rounded text-sm">
+              1st component
+            </code>
+            . Unlike{" "}
+            <code className="bg-gray-100 px-1 py-0.5 rounded text-sm">
+              Loading.jsx
+            </code>
+            , I don't make the whole page wait — thanks to{" "}
+            <strong>React Suspense</strong>.
+          </p>
+          <p className="text-gray-700 text-base leading-relaxed">
+            I enable <strong>partial rendering</strong>, letting your app remain
+            interactive while specific components (like the data card) load in
+            the background.
+          </p>
+          <div className="text-sm text-indigo-600 italic">
+            "Loading UI without blocking user experience — that’s the magic of
+            Suspense!"
+          </div>
+        </div>
+      </div>
+
       <Suspense fallback={<Load />}>
         <DataCard userName={userName} />
       </Suspense>
