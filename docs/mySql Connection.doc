@@ -1,0 +1,28 @@
+-- Create the database
+CREATE DATABASE hospital_db;
+
+-- Use the created database
+USE hospital_db;
+
+-- Create the doctors table
+CREATE TABLE doctors (
+    doctor_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    gender ENUM('Male', 'Female', 'Other'),
+    specialization VARCHAR(100),
+    email VARCHAR(100) UNIQUE,
+    phone VARCHAR(15),
+    address TEXT,
+    city VARCHAR(50),
+    state VARCHAR(50),
+    postal_code VARCHAR(10),
+    date_of_birth DATE,
+    experience_years INT,
+    license_number VARCHAR(50) UNIQUE,
+    joining_date DATE,
+    is_active BOOLEAN DEFAULT TRUE
+);
+
+-- Retrieve all records from doctors table
+SELECT * FROM doctors;
