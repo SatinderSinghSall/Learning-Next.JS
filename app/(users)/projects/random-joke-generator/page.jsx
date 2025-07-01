@@ -6,7 +6,7 @@ const RandomJoke = () => {
   const [randomJokes, setRandomJokes] = useState([]);
   const [showJokes, setShowJokes] = useState(true);
 
-  const URL = "https://www.official-joke-api.appspot.com/random_joke";
+  const URL = "https://official-joke-api.appspot.com/random_joke";
 
   const fetchRandomJokes = async () => {
     const res = await fetch(URL);
