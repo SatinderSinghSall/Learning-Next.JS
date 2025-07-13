@@ -1,15 +1,16 @@
-// "use client";
+"use client";
 
 import { Mail, Github, Linkedin, Twitter } from "lucide-react";
 import { contactAction } from "./contact.action";
+import { useActionState } from "react";
 
-export const metadata = {
-  title: "Satinder - Contact Us",
-  description:
-    "Welcome to Satinder Build modern apps faster with Next.js and Tailwind CSS.",
-  authors: [{ name: "Satinder Singh Sall" }, { name: "Vaibhav Soni" }],
-  keywords: ["Next.JS", "React.JS"],
-};
+// export const metadata = {
+//   title: "Satinder - Contact Us",
+//   description:
+//     "Welcome to Satinder Build modern apps faster with Next.js and Tailwind CSS.",
+//   authors: [{ name: "Satinder Singh Sall" }, { name: "Vaibhav Soni" }],
+//   keywords: ["Next.JS", "React.JS"],
+// };
 
 // const contactAction = (formData) => {
 //   const { name, email, message } = Object.fromEntries(formData.entries());
@@ -17,6 +18,8 @@ export const metadata = {
 // };
 
 const Contact = () => {
+  const [state, formAction, isPending] = useActionState(contactAction, null);
+
   return (
     <main className="pt-24 px-4 min-h-screen bg-gray-50 flex flex-col items-center justify-center">
       {/* Contact Form */}
@@ -26,7 +29,7 @@ const Contact = () => {
           Have questions, ideas, or want to collaborate? Send me a message and
           I'll get back to you!
         </p>
-        <form className="space-y-6" action={contactAction}>
+        <form className="space-y-6" action={formAction}>
           <div>
             <label
               htmlFor="name"
@@ -78,9 +81,41 @@ const Contact = () => {
           <div>
             <button
               type="submit"
-              className="w-full cursor-pointer inline-flex justify-center py-3 px-6 border border-transparent shadow-md text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl text-base font-semibold transition duration-200"
+              disabled={isPending}
+              className={`w-full inline-flex items-center justify-center py-3 px-6 border border-transparent shadow-md text-white rounded-xl text-base font-semibold transition duration-200
+    ${
+      isPending
+        ? "bg-indigo-400 cursor-not-allowed"
+        : "bg-indigo-600 hover:bg-indigo-700 cursor-pointer"
+    }`}
             >
-              Send Message
+              {isPending ? (
+                <>
+                  <svg
+                    className="animate-spin h-5 w-5 mr-2 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                    ></path>
+                  </svg>
+                  Sending...
+                </>
+              ) : (
+                <span>Send Message</span>
+              )}
             </button>
           </div>
         </form>
@@ -89,7 +124,6 @@ const Contact = () => {
         </p>
       </div>
 
-      {/* Social Links */}
       {/* Social Links */}
       <section className="w-full mb-16 max-w-4xl">
         <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
