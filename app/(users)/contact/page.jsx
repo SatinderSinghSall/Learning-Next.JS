@@ -1,4 +1,5 @@
 import { Mail, Github, Linkedin, Twitter } from "lucide-react";
+import { contactAction } from "./contact.action";
 
 export const metadata = {
   title: "Satinder - Contact Us",
@@ -18,7 +19,7 @@ const Contact = () => {
           Have questions, ideas, or want to collaborate? Send me a message and
           I'll get back to you!
         </p>
-        <form className="space-y-6">
+        <form className="space-y-6" action={contactAction}>
           <div>
             <label
               htmlFor="name"
@@ -70,7 +71,7 @@ const Contact = () => {
           <div>
             <button
               type="submit"
-              className="w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-md text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl text-base font-semibold transition duration-200"
+              className="w-full cursor-pointer inline-flex justify-center py-3 px-6 border border-transparent shadow-md text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl text-base font-semibold transition duration-200"
             >
               Send Message
             </button>
