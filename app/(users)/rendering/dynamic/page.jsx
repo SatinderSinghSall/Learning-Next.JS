@@ -8,15 +8,30 @@ import {
   ShieldCheck,
   BadgeCheck,
 } from "lucide-react";
+import { cache } from "react";
+
+export const dynamic = "force-dynamic";
 
 const DynamicPage = async () => {
-  const [doctors] = await db.execute("SELECT * FROM doctors");
+  const doctors = await getAllDoctors();
 
   return (
     <div className="p-8 max-w-7xl mx-auto">
       <h1 className="mt-15 text-4xl font-bold text-gray-900 mb-10 text-center">
         Meet Our Doctors
       </h1>
+      <DoctorsListData doctors={doctors} />
+    </div>
+  );
+};
+
+export default DynamicPage;
+
+const DoctorsListData = async () => {
+  const doctors = await getAllDoctors();
+
+  return (
+    <>
       <ul className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {doctors.map((doctor) => (
           <li
@@ -100,8 +115,12 @@ const DynamicPage = async () => {
           </li>
         ))}
       </ul>
-    </div>
+    </>
   );
 };
 
-export default DynamicPage;
+const getAllDoctors = cache(async () => {
+  const [doctors] = await db.execute("SELECT * FROM doctors");
+  console.log("Fetching doctors data.");
+  return doctors;
+});
