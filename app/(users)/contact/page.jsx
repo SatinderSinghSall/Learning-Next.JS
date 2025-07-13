@@ -1,3 +1,5 @@
+// "use client";
+
 import { Mail, Github, Linkedin, Twitter } from "lucide-react";
 import { contactAction } from "./contact.action";
 
@@ -8,6 +10,11 @@ export const metadata = {
   authors: [{ name: "Satinder Singh Sall" }, { name: "Vaibhav Soni" }],
   keywords: ["Next.JS", "React.JS"],
 };
+
+// const contactAction = (formData) => {
+//   const { name, email, message } = Object.fromEntries(formData.entries());
+//   console.log(name, email, message);
+// };
 
 const Contact = () => {
   return (
