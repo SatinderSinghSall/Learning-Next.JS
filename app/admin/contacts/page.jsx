@@ -20,7 +20,36 @@ export default function ContactsPage() {
   const openModal = (contact) => setSelectedContact(contact);
   const closeModal = () => setSelectedContact(null);
 
-  if (loading) return <p className="p-4 text-center">Loading contacts...</p>;
+  if (loading)
+    return (
+      <div className="max-w-6xl mx-auto px-6 py-10 animate-pulse">
+        <h1 className="text-4xl font-bold mt-11 mb-5 text-center">
+          Contact Submissions
+        </h1>
+        <div className="mb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="p-6 bg-gradient-to-r from-purple-500 to-indigo-500 text-white rounded-2xl shadow-lg flex items-center gap-4 opacity-70">
+            <div className="bg-white/30 p-4 rounded-full w-16 h-16" />
+            <div>
+              <div className="h-8 bg-white/30 rounded mb-2 w-24"></div>
+              <div className="h-4 bg-white/20 rounded w-20"></div>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[...Array(6)].map((_, index) => (
+            <div
+              key={index}
+              className="p-5 rounded-2xl shadow-lg border bg-white space-y-4"
+            >
+              <div className="h-5 bg-gray-200 rounded w-1/2" />
+              <div className="h-4 bg-gray-200 rounded w-3/4" />
+              <div className="h-24 bg-gray-100 rounded" />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10">
