@@ -29,6 +29,19 @@ const Contact = () => {
           Have questions, ideas, or want to collaborate? Send me a message and
           I'll get back to you!
         </p>
+        <section>
+          {state && (
+            <div
+              className={`mb-8 rounded-xl px-6 py-4 text-sm font-medium shadow-md ${
+                state.success
+                  ? "bg-green-100 text-green-700 border border-green-300"
+                  : "bg-red-100 text-red-700 border border-red-300"
+              }`}
+            >
+              {state.message}
+            </div>
+          )}
+        </section>
         <form className="space-y-6" action={formAction}>
           <div>
             <label
