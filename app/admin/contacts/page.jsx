@@ -1,7 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Mail, User, MessageSquareText, XCircle } from "lucide-react";
+import {
+  Mail,
+  User,
+  MessageSquareText,
+  XCircle,
+  IdCardLanyard,
+} from "lucide-react";
 
 export default function ContactsPage() {
   const [contacts, setContacts] = useState([]);
@@ -101,7 +107,7 @@ export default function ContactsPage() {
           <div className="bg-white p-8 rounded-xl max-w-md w-full shadow-2xl relative">
             <button
               onClick={closeModal}
-              className="absolute top-3 right-3 text-gray-400 hover:text-red-500"
+              className="absolute cursor-pointer top-3 right-3 text-gray-400 hover:text-red-500"
             >
               <XCircle className="w-6 h-6" />
             </button>
@@ -112,6 +118,10 @@ export default function ContactsPage() {
             <p className="flex items-center gap-2 mb-2 text-gray-600">
               <Mail className="w-5 h-5 text-green-600" />
               {selectedContact.email}
+            </p>
+            <p className="flex items-center gap-2 mb-2 text-gray-600">
+              <IdCardLanyard className="w-5 h-5 text-green-600" />
+              {selectedContact.id}
             </p>
             <div className="mt-4">
               <h3 className="text-lg font-semibold mb-1 flex items-center gap-2 text-gray-700">
