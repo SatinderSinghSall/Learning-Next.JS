@@ -1,8 +1,16 @@
+"use client";
+
 import React from "react";
 import { Home, ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function NotFoundPage() {
+  const router = useRouter();
+  const handleGoBack = () => {
+    router.back();
+  };
+
   return (
     <div className="min-h-screen bg-gray-900 flex items-center justify-center px-4">
       <div className="max-w-lg w-full text-center">
@@ -34,7 +42,10 @@ export default function NotFoundPage() {
             </Link>
           </button>
 
-          <button className="group flex items-center justify-center gap-2 bg-gray-800 hover:bg-gray-700 text-white font-medium py-3 px-6 rounded-lg border border-gray-600 hover:border-gray-500 transition-all duration-300 transform hover:scale-105">
+          <button
+            onClick={handleGoBack}
+            className="group cursor-pointer flex items-center justify-center gap-2 bg-gray-800 hover:bg-gray-700 text-white font-medium py-3 px-6 rounded-lg border border-gray-600 hover:border-gray-500 transition-all duration-300 transform hover:scale-105"
+          >
             <ArrowLeft size={20} />
             <span>Go Back</span>
           </button>
